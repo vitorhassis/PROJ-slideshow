@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link rel="shortcut icon" href="img/faviconvh.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="slides">
+            <input type="radio" name="slide" id="slide1" checked> <!--- uma bolinha, tipo um checkbox, que nao da para desmarcar. Vai ser uma para cada imagem, por isso 5. Colocamos o mesmo nome, para indicar que sao do mesmo grupo de slide. Logo, apesar dos dois estarem do lado, eu so posso marcar um, nao os dois ao mesmo tempo. o "checked" serve para que, ao recarregar a pagina, o primeiro radio esteja ja checkado. -->
+            <input type="radio" name="slide" id="slide2">
+            <input type="radio" name="slide" id="slide3">
+            <input type="radio" name="slide" id="slide4">
+            <input type="radio" name="slide" id="slide5">
+
+            <!---uma div para cada imagem-->
+
+            <div class="slide s1"> <!--- colocamos uma classe diferente na primeira, pq vai ser importante la na frente para reconhecer essa div, como primeira imagem-->
+                <img src="img/1.jpg" alt="paisagem medieval com montanhas"> <!---src busca a imagem, o alt de alternativo, serve para descrever a imagem, uma descricao. importante sempre colocar-->
+            </div>
+            <div class="slide">
+                <img src="img/2.jpg" alt="paisagem fantasiosa, temática roxa">
+            </div>
+            <div class="slide">
+                <img src="img/3.jpg" alt="capa do jogo cities skylines">
+            </div>
+            <div class="slide">
+                <img src="img/4.jpg" alt="paisagem fantasiosa com montanhas">
+            </div>
+            <div class="slide">
+                <img src="img/5.jpg" alt="capa do jogo the first tree">
+
+            </div>
+        </div>
+        <div class="navegation"> <!--- aq, teremos a div destinada para a barra de navegação-->
+            <label class="bar" for="slide1"></label> <!--- vale ressaltar que o label será responsavel por indicar qual checkbox estará relacionada com qual imagem. Exemplo, o primeiro checkbox, ou seja, a primeira bolinha marcada, deverá ser relativa a primeira imagem. para ter esse link, vc atribui a propriedade label, indicando no for a class da div da imagem. O que está dentro dos >< indica o que vai fazer o processo funcionar. tipo as ul do site TMOC e sua funcionalidade.--->
+            <label class="bar" for="slide2"></label>
+            <label class="bar" for="slide3"></label>
+            <label class="bar" for="slide4"></label>
+            <label class="bar" for="slide5"></label>
+
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

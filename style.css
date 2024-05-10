@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+body { 
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw; /*para evitar que, posteriormente, qnd estiver apenas uma img na foto, ele nao pegue 100% da img. adicionando o height e width em 100%, qnd ficar apenas uma imagem vai evitar esse bug*/
+    background: linear-gradient(72deg, #3DEBB0 1%, #8956F3 99%); /*aqui, é a propriedade com os valores especificos para ficar esse degrade de fundo das imagens. Esse primeiro valor, vai ser a direção para onde vai o degrade. 72 seria 72 graus (degrade do cantos inferior esquerdo para o canto superior direito*/
+}
+
+.content {
+    height: 520px;
+    width: 935px;
+    border-radius: 20px;
+    overflow: hidden; /*antes de colocar essa propriedade, como temos uma div principal com todo o conteudo das imagens dentro dela, as imagens acabavam ficando uma embaixo da outra fugindo da proposta (acontecia isso, porque a dimensao das imagens era maior da definida aqui no CSS, de 520px height e 935px de width). Essa propriedade overflow HIDDEN, faz com que todas as imagens/conteudos que estavam ultrapassando as dimensoes do content, sumissem/se escondessem (tradução de HIDDEN)*/
+    position: absolute; /*para centralizar, usamos a propriedade position absolute, pq ele permite o usuario posicionar o conteudo onde voce quiser na TELA. Se voce apenas colocar o position, top e left, a imagem, vai comecar no centro da tela, ent vai ficar deslocada toda a imagem para a direita. para arrumarmos isso, usaremos o TRANSFORM TRANSLATE para ficar exatamente no centro, como queremos*/
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.navegation {
+    position: absolute; /*usamos o absolute. Como ele tem um elemento pai, que seria o content, ele nao vai ser alinhado em qualquer local da tela. Porque ele tem um pai. No caso do content, como ele nao tem um pai, ele sim pode ser movido para qualquer local da TELA. O navigation, ou seja, a barrinha de slide, vai ser alinhado de acordo com seu pai, content.*/
+    bottom: 20px; /*bottom eh embaixo.*/
+    left: 50%;
+    transform: translate(-50%);
+    display: flex; /*para permitir que os elementos fiquem um do lado do outro. e nao um em cima do outro.*/
+}
+
+.bar {
+    border: 2px solid #fff; /*colocando primeiro a propriedade de border, e personalizando ela, voce consegue visualizar ela, facilitando o entendimento para a largura e altura. Cada quadradinho desse, eh um label la em html. Fica facil o entendimento da funcionalidade da propriedade label, qnd voce percebe que, ao clicar sobre o label, o checkbox relacionado com ela, eh ativado. por isso, toda aquela conexao de cada id em cada label. CADA INPUT EH UM LABEL*/
+    width: 70px;
+    height: 17px;
+    margin: 6px; /*pra ficar mais separadinho*/
+    border-radius: 5px;
+    cursor: pointer; /*para ficar a maozinha de clicar ao passar sobre cada label*/
+    transition: .4s; /*para ter esse efeito de suavizacao ao passar o mouse sobre as label's.*/
+
+}
+
+.bar:hover {
+    /*uma estilizacao. ao passar o mouse sobre o label, ficar com o fundin branco. */
+    background-color: #fff;
+    
+}
+
+input {
+    display: none; /*para sumir os checkbox's, que estavam em cima das imagens*/
+}
+
+.slides {
+    display: flex; /*colocamos display flex, porque por padrao, as imagens estao uma embaixo da outra por serem display BLOCK. Colocando display flex, eh possivel atingir o objetivo das imagens ficarem um ao lado da outra. apesar do display hidden fazer as imagens desaparecerem, elas ainda continuam umas sobre a outras.*/
+    width: 500%; /*como sao 5 imagens, se o width fosse 100%, ia aparecer as 5 imagens de uma vez. 500% faz essas imagens aparecerem apenas uma por vez*/
+    height: 100%;
+}
+
+.slide {
+    width: 20%; /*para que todas as imagens tenham o mesmo tamanho. a div pai eh 100%. como sao 5 imagens, 20% para cada imagem. confesso que fiquei confuso nessa parte*/
+    transition: 0.6s; /*efeito legal para o projeto*/
+}
+
+.slide img {
+    width: 100%; /*para aparecer a imagem inteira, tanto na largura quanto na altura. Como todas as imagens tem a mesma classe, apenas esse tópico já configura devidamente as demais img's*/
+    height: 100%;
+}
+
+#slide1:checked ~ .s1 {
+/* "o s1 serve para, quando o slide 1 estiver checkado, primeiro input, eu quero que o s1, a primeira div da imagem, tenha uma margem left de zero." .s1 porque s1 eh a div da imagem. */
+    margin-left: 0; /*pq aq vai ser zero? e nao 20%? porque como ela é definida para ser a primeira imagem, quando o slide1 estiver checked, nao vai precisar mover 20% para a esquerda.*/
+}
+
+#slide2:checked ~ .s1 {
+    margin-left: -20%; /*quero que mova 20% para a esquerda, quando o slide1 estiver checkado. Porque 20%? porque eh o tamanho para aparecer a próxima imagem.*/
+}
+
+#slide3:checked ~ .s1 {
+    margin-left: -40%; /*no caso, -40% pra esquerda, porque -20% faz aparecer a segunda imagem. pra aparecer a terceira imagem qnd o input checkbox for assinalado, eh necessário que a imagem mova -40% referente a primeira imagem.*/
+}
+
+#slide4:checked ~ .s1 {
+    margin-left: -60%;
+}
+
+#slide5:checked ~.s1 {
+    margin-left: -80%;
+}
+
